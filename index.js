@@ -1,6 +1,3 @@
-<html>
-  <body>
-<script type="text/javascript">
 //bugs:
 //pause button slightly delays the next projectile shot by the enemies
 //some transitions in the lose screen are very messed up
@@ -1506,6 +1503,3 @@ function drawRectangle(x,y,width,height,color){
     rect.setColor(color);
     add(rect);
 }
- </script>
-</body>
-<html>
