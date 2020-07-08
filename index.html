@@ -1,13 +1,27 @@
+
 <html>
 <head>
 <title>Escape from Chernobyl 2</title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-<script type="text/javascript" src="https://static.codehs.com/gulp/231044b4a21a1468e8b745526edb1bc8f5294ef6/chs-js-lib/chs.js"></script>
+<script type="text/javascript" src="https://static.codehs.com/gulp/12a360be97a6f7de79e3df8a151148cacb528b0c/chs-js-lib/chs.js"></script>
 
 
 <style>
+canvas {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+pre {
+    border: 1px solid black;
+    display: inline-block;
+    width: 400px;
+    height: 500px;
+    background-color: #F5F5F5;
+}
 </style>
 
 </head>
@@ -19,7 +33,7 @@
 
 <canvas
 width="400"
-height="480"
+height="500"
 class="codehs-editor-canvas"></canvas>
 <pre id="console"></pre>
 
@@ -96,13 +110,14 @@ function start(){
     rectangle.setPosition(0,0);
     add(rectangle);
     
-    startScreen();
-    
-    keyDownMethod(controls);
-    
     yoda = new WebImage("https://codehs.com/uploads/618ea6a061380467883ea3035af1366e");
     yoda.setSize(50, 50);
     yoda.setPosition(0,0);
+    add(yoda);
+    
+    startScreen();
+    
+    keyDownMethod(controls);
     
     blankArray = new Circle(1);
     blankArray.setPosition(getWidth()*5,getHeight()*5);
@@ -126,6 +141,7 @@ function startScreen(){
     startButton.setPosition(120, getHeight()/2);
     add(startButton);
     drawText(155,290,Color.black,"Start","30pt Impact");
+
 }
 function clickToStart(e){
     if(e.getX() > startButton.getX() && e.getX() < startButton.getX()+startButton.getWidth() && e.getY() > startButton.getY() && e.getY() < startButton.getY()+startButton.getHeight()){
@@ -133,9 +149,10 @@ function clickToStart(e){
     level = 1;
     tutorial = new Audio("https://codehs.com/uploads/7e9ccdf88f86cea341bcc4410b58557d");
     tutorial.play();
-    levelOne();
+    win();
     
     return;
+    
     }
 }
 //code for the levels
@@ -872,7 +889,7 @@ function nextLevelEight(){
     level = 9;
     levelFinish = 0;
     tutorial.pause();
-    tutorial = new Audio("https://codehs.com/uploads/970de5995da530ee6eb95cd88f7d0682");
+    tutorial = new Audio("https://codehs.com/uploads/08c4029fee4dd0c57b55ed5a20514b99");
     tutorial.play();
     levelNine();
     return;
@@ -1302,27 +1319,27 @@ function winGif(){
     funeral.setPosition(0-winTimer%5*400,0-Math.floor(winTimer/5)*480);    
     }
     
-    if(winTimer > 300 && winTimer < 600){
+    if(winTimer > 300 && winTimer < 605){
     remove(funeral);
     funeral = new WebImage("https://i.imgur.com/jhmIUbU.jpg");
     funeral.setSize(getWidth()*5,getHeight()*61);
     funeral.setPosition(0-(winTimer-300)%5*400,0-Math.floor((winTimer-300)/5)*480);
     }
     
-    if(winTimer > 600 && winTimer < 750){
+    if(winTimer > 605 && winTimer < 755){
     remove(funeral);
     funeral = new WebImage("https://i.imgur.com/pK3OjME.jpg");
     funeral.setSize(getWidth()*5,getHeight()*30);
     funeral.setPosition(0-(winTimer-600)%5*400,0-Math.floor((winTimer-600)/5)*480);
     }
-    if(winTimer > 750 && winTimer < 900){
+    if(winTimer > 755 && winTimer < 905){
     remove(funeral);
     funeral = new WebImage("https://i.imgur.com/wTdZurd.jpg");
     funeral.setSize(getWidth()*5,getHeight()*30);
     funeral.setPosition(0-(winTimer-750)%5*400,0-Math.floor((winTimer-750)/5)*480);
     }
     
-    if(winTimer > 899 && winTimer < 1200){
+    if(winTimer > 905 && winTimer < 1205){
     remove(funeral);
     funeral = new WebImage("https://i.imgur.com/cM8HmlX.jpg");
     funeral.setSize(getWidth()*5,getHeight()*55);
@@ -1330,7 +1347,7 @@ function winGif(){
     }
     add(funeral);
     
-    if(winTimer > 1200 && winTimer < 1350){
+    if(winTimer > 1205 && winTimer < 1355){
     drawRectangle(0,0,getWidth(),getHeight(),Color.black);
     
     var winText = new Text("Yoda was arrested for war crimes","17pt Comic Sans");
@@ -1406,7 +1423,7 @@ function winGif(){
     oceanManCounter = 1;
     }
     }
-    if(winTimer > 1350 && winTimer < 1450){
+    if(winTimer > 1355 && winTimer < 1455){
     drawRectangle(0,0,getWidth(),getHeight(),Color.black);
     var winText = new Text("treason, bibery, coercion, domestic","17pt Comic Sans");
     winText.setPosition(getWidth()/2-winText.getWidth()/2,50);
@@ -1477,7 +1494,7 @@ function winGif(){
     winText.setColor(Color.white);
     add(winText);
     }
-    if(winTimer > 1450){
+    if(winTimer > 1455){
     if(creditCounter == 0){
     drawRectangle(0,0,getWidth(),getHeight(),Color.black);
     drawRectangle(0,0,getWidth(),getHeight(),Color.black);
@@ -1498,8 +1515,8 @@ function winGif(){
 }
 }
 function credits(){
-    creditText.move(0,1);
-    creditText2.move(0,1);
+    creditText.move(0,7);
+    creditText2.move(0,7);
 }
 //functions to make things easier 
 function soundFile(link){
